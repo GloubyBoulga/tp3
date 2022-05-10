@@ -20,14 +20,13 @@ public class Portefeuille {
    * @return Vrai si la transaction a été effectuée, faux sinon.  
    */
   public boolean transfertDevise (Portefeuille destination, double montantJetons) {
-    if ( this.monnaie == destination.getMonnaie() && this.montant >= montantJetons ) {
-      this.montant -= montantJetons;
-      destination.montant += this.montant;
-      return true;
-    }
-    else
+    if ( this.monnaie.getNom() != destination.getMonnaie().getNom() || this.montant < montantJetons ) {
       return false;
     }
+    else
+      this.montant -= montantJetons;
+      destination.montant += montantJetons;
+      return true;
   }
 
   /**
@@ -38,23 +37,13 @@ public class Portefeuille {
    * @return true si le montant en euros est supérieur ou égal à 0 
    */
   public boolean achatDevise (double montantEuros){
-<<<<<<< HEAD
-    if ( montantEuros <= 0 && this.montant < montantEuros)
+
+    if ( montantEuros <= 0 )
       return false;
     else {
-      this.montant -= montantEuros;
-      this.monnaie += montantEuros/monnaie.getValeurDeJeton();
+      this.montant += montantEuros/monnaie.getValeurDeJeton();
       return true;
     }
-=======
-	if ( this.montant >= 0  )
-    {
-        this.montant = this.montant - montantEuros ;
-        return true;
-    }
-    else
-        return false;
->>>>>>> f137b14c6a6b2133a954be4f4463d2a26cc35c22
   }
 
   /**

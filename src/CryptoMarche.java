@@ -25,7 +25,6 @@ public class CryptoMarche {
      * @return capital en euros du propriétare.
      */
     public double capitalEnEuros(String proprietaire){
-        
         double dRet = 0;
         for (Portefeuille p:this.portefeuilles) {
             if (p.getProprietaire() == proprietaire)
@@ -44,11 +43,10 @@ public class CryptoMarche {
     public double capitalMonneaie(Cryptomonnaie monnaie){
         double dRet = 0;
         for (Portefeuille p:this.portefeuilles) {
-            if (p.getMonnaie() == monnaie)
+            if (p.getMonnaie().getNom() == monnaie.getNom())
                 dRet += p.getMontant();
         }
-        return dRet;
-
+        return dRet*monnaie.getValeurDeJeton();
     }
 
     @Override
