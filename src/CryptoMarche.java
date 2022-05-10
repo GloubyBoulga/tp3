@@ -11,7 +11,7 @@ public class CryptoMarche {
 
     public static CryptoMarche getInstance(){
         if(marche == null){ marche = new CryptoMarche();}
-		return marche;
+        return marche;
     }
 
     public void ajouter(Portefeuille p){
@@ -21,15 +21,17 @@ public class CryptoMarche {
     /**
      * Cette fonction recherche sur le marché tous les portefeuilles 
      * du propriétaire et calcule son capital en euros. 
-     * @param proprietare
+     * @param proprietaire
      * @return capital en euros du propriétare.
      */
     public double capitalEnEuros(String proprietaire){
-        /**
-			FONCTION À IMPLEMENTER
-        **/
-
-        return 0;
+        
+        double dRet = 0;
+        for (Portefeuille p:this.portefeuilles) {
+            if (p.getProprietaire() == proprietaire)
+                dRet += p.valeurEnEuros();
+        }
+        return dRet;
     }
 
     /**
@@ -40,11 +42,12 @@ public class CryptoMarche {
      * @return capital total en circulation de la cryptomonnaie (en euros).
      */
     public double capitalMonneaie(Cryptomonnaie monnaie){
-        /**
-			FONCTION À IMPLEMENTER
-        **/
-
-        return 0;
+        double dRet = 0;
+        for (Portefeuille p:this.portefeuilles) {
+            if (p.getMonnaie() == monnaie)
+                dRet += p.getMontant();
+        }
+        return dRet;
 
     }
 
