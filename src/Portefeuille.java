@@ -38,6 +38,7 @@ public class Portefeuille {
    * @return true si le montant en euros est supérieur ou égal à 0 
    */
   public boolean achatDevise (double montantEuros){
+<<<<<<< HEAD
     if ( montantEuros <= 0 && this.montant < montantEuros)
       return false;
     else {
@@ -45,6 +46,15 @@ public class Portefeuille {
       this.monnaie += montantEuros/monnaie.getValeurDeJeton();
       return true;
     }
+=======
+	if ( this.montant >= 0  )
+    {
+        this.montant = this.montant - montantEuros ;
+        return true;
+    }
+    else
+        return false;
+>>>>>>> f137b14c6a6b2133a954be4f4463d2a26cc35c22
   }
 
   /**
